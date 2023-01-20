@@ -172,7 +172,6 @@ function touched(){
     if (k.highlight && !(winner || level > 5)){
       currentword+=k.letter;
     }
-    k.highlight = false;
   }
   if (entHighlight && !(winner || level > 5) && WORDS.indexOf(currentword.toLowerCase()) != -1 && currentword.length == 5){
     words[level] = new Word();
@@ -194,7 +193,6 @@ function mousePressed(){
     if (k.highlight && !(winner || level > 5)){
       currentword+=k.letter;
     }
-    k.highlight = false;
   }
   if (entHighlight && !(winner || level > 5) && WORDS.indexOf(currentword.toLowerCase()) != -1 && currentword.length == 5){
     words[level] = new Word();
