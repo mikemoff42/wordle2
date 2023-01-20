@@ -153,13 +153,17 @@ function notAWord(){
   textSize(xspacing*0.9);
   fill(255);
 }
+let completed;
 function touchStarted(){
+	completed=false;
   touched();
 
 }
 function touchEnded(){
+	if(completed){
   mouseX=0;
   mouseY=0;
+	}
 }
 function touched(){
 	
@@ -182,6 +186,7 @@ function touched(){
     currentword = currentword.substring(0, currentword.length - 1);
     backHighlight=false;
   }
+  completed=true;
 }
 function mousePressed(){
   if (newGameHighlight){
