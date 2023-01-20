@@ -154,14 +154,36 @@ function notAWord(){
   fill(255);
 }
 function touchStarted(){
-  mousePressed();
+  touched();
 
 }
 function touchEnded(){
   mouseX=0;
   mouseY=0;
 }
-
+function touched(){
+	
+  if (newGameHighlight){
+    newGameHighlight=false;
+    freePlay=true;
+    newGame();
+  }
+  for (let k of allKeys){
+    if (k.highlight && !(winner || level > 5)){
+      currentword+=k.letter;
+    }
+    k.highlight = false;
+  }
+  if (entHighlight && !(winner || level > 5) && WORDS.indexOf(currentword.toLowerCase()) != -1 && currentword.length == 5){
+    words[level] = new Word();
+    level++;
+    currentword='';
+  }
+  if (backHighlight && currentword.length>0 && !(winner || level > 5)){
+    currentword = currentword.substring(0, currentword.length - 1);
+    backHighlight=false;
+  }
+}
 function mousePressed(){
   if (newGameHighlight){
     newGameHighlight=false;
